@@ -35,7 +35,10 @@ $routes->set404Override();
 
 //$routes->get('/', 'Home::index');
 //$routes->get('/pelicula', 'PeliculaController::index');
+
+// CRUD
 $routes->presenter('pelicula');
+$routes->presenter('categoria');
 
 /*
  * --------------------------------------------------------------------
