@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Dashboard;
 
+use App\Controllers\BaseController;
 use App\Models\CategoriaModel;
 
-class Categoria extends BaseController 
+class Categoria extends BaseController
 {    
 
     private $categoriaModel;
@@ -20,7 +21,7 @@ class Categoria extends BaseController
             'categoria' => $this->categoriaModel->findAll()
         ];
 
-        echo view('/categoria/index', $data);
+        echo view('dashboard/categoria/index', $data);
     }
 
     public function new()
@@ -31,7 +32,7 @@ class Categoria extends BaseController
             ]
         ];
 
-        echo view('/categoria/new', $data);
+        echo view('dashboard/categoria/new', $data);
     }
 
     public function show($id)
@@ -40,7 +41,7 @@ class Categoria extends BaseController
             'categoria' => $this->categoriaModel->find($id)
         ];
 
-        echo view('/categoria/show', $data);
+        echo view('dashboard/categoria/show', $data);
     }
 
     public function create()
@@ -51,7 +52,7 @@ class Categoria extends BaseController
 
         $this->categoriaModel->insert($data);
 
-        echo "created";
+        return redirect()->to('/dashboard/categoria');
     }
     
     public function edit($id)
@@ -60,7 +61,7 @@ class Categoria extends BaseController
             'categoria' => $this->categoriaModel->find($id)
         ];
 
-        echo view('categoria/edit', $data);   
+        echo view('dashboard/categoria/edit', $data);   
     }
 
     public function update($id)
@@ -71,14 +72,14 @@ class Categoria extends BaseController
 
         $this->categoriaModel->update($id, $data);
 
-        echo "updated";
+        return redirect()->to('/dashboard/categoria');
     }
 
     public function delete($id)
     {
         $this->categoriaModel->delete($id);
 
-        echo "deleted";
+        return redirect()->to('/dashboard/categoria');
     }
 }
 

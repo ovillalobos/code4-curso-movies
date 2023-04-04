@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Dashboard;
 
+use App\Controllers\BaseController;
 use App\Models\PeliculaModel;
 
-class Pelicula extends BaseController 
+class Pelicula extends BaseController
 {    
     private $peliculaModel;
 
@@ -18,7 +19,7 @@ class Pelicula extends BaseController
             'peliculas' => $this->peliculaModel->findAll()
         ];
 
-        echo view('/pelicula/index', $data);
+        echo view('/dashboard/pelicula/index', $data);
     }
 
     public function new()
@@ -30,7 +31,7 @@ class Pelicula extends BaseController
             ]
         ];
 
-        echo view('/pelicula/new', $data);
+        echo view('/dashboard/pelicula/new', $data);
     }
 
     public function show($id)
@@ -39,7 +40,7 @@ class Pelicula extends BaseController
             'pelicula' => $this->peliculaModel->find($id)
         ];
 
-        echo view('/pelicula/show', $data);
+        echo view('/dashboard/pelicula/show', $data);
     }
 
     public function create()
@@ -51,7 +52,7 @@ class Pelicula extends BaseController
 
         $this->peliculaModel->insert($data);
 
-        echo "created";
+        return redirect()->to('/dashboard/pelicula');
     }
     
     public function edit($id)
@@ -60,7 +61,7 @@ class Pelicula extends BaseController
             'pelicula' => $this->peliculaModel->find($id)
         ];
 
-        echo view('pelicula/edit', $data);   
+        echo view('/dashboard/pelicula/edit', $data);   
     }
 
     public function update($id)
@@ -72,7 +73,12 @@ class Pelicula extends BaseController
 
         $this->peliculaModel->update($id, $data);
 
-        echo "updated";
+        //REDIRECCIONE
+        //return redirect()->back(); // Regresa a la pagina anterior
+        //return redirect()->to('/dashboard/pelicula'); // Regresa a una pagina especifica
+        //return redirect()->route('pelicula.test'); // Regresa a una ruta especifica { $routes->get('test', 'Pelicula::test', ['as' => 'pelicula.test']); }
+
+        return redirect()->to('/dashboard/pelicula');
     }
 
     public function delete($id)
@@ -80,5 +86,12 @@ class Pelicula extends BaseController
         $this->peliculaModel->delete($id);
 
         echo "deleted";
+
+        return redirect()->to('/dashboard/pelicula');
+    }
+
+    public function test()
+    {
+        echo "Hello world";
     }
 }

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <?= view('/categoria/include/header',['title' => 'Categorias']); ?>
+        <?= view('/dashboard/categoria/include/header',['title' => 'Categorias']); ?>
     </head>
     <body>
         <h1>Listado de categorias</h1>
-        <a href="/categoria/new/">Create</a>
+        <a href="/dashboard/categoria/new/">Create</a>
         <table border="1">
             <tr>
                 <th>Id</th>
@@ -17,9 +17,9 @@
                     <td><?= $p['id']; ?></td>
                     <td><?= $p['title']; ?></td>
                     <td>
-                        <a href="/categoria/show/<?= $p['id'] ?>">Show</a>
-                        <a href="/categoria/edit/<?= $p['id'] ?>">Edit</a>
-                        <form action="/categoria/delete/<?= $p['id'] ?>" method="post">
+                        <a href="/dashboard/categoria/show/<?= $p['id'] ?>">Show</a>
+                        <a href="/dashboard/categoria/edit/<?= $p['id'] ?>">Edit</a>
+                        <form action="/dashboard/categoria/delete/<?= $p['id'] ?>" method="post">
                             <button type="submit">Delete</button>
                         </form>
                     </td>
@@ -27,6 +27,6 @@
             <?php endforeach ?>
         </table>    
 
-        <?= view('/categoria/include/footer',['option' => 'pelicula']); ?>
+        <?= view('/dashboard/categoria/include/footer',['option' => 'pelicula']); ?>
     </body>
 </html>

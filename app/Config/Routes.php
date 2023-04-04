@@ -37,8 +37,19 @@ $routes->set404Override();
 //$routes->get('/pelicula', 'PeliculaController::index');
 
 // CRUD
-$routes->presenter('pelicula');
-$routes->presenter('categoria');
+$routes->group('dashboard', function($routes){
+    $routes->presenter('pelicula', [
+        'controller' => 'Dashboard\Pelicula'
+    ]);
+    $routes->presenter('categoria',[
+        //'only' => ['index','create']
+        //'except' => ['show']
+        'controller' => 'Dashboard\Categoria'
+    ]);
+
+    //$routes->get('test', 'Dashboard\Pelicula::test', ['as' => 'pelicula.test']);
+});
+
 
 /*
  * --------------------------------------------------------------------

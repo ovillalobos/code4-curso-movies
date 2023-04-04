@@ -7,9 +7,9 @@
     <title>Update movie</title>
 </head>
 <body>
-    <form action="/pelicula/update/<?= $pelicula['id']; ?>" method="post">
-        <?= view('/pelicula/_form',['op' => 'Update']); ?>
+    <form action="/dashboard/pelicula/update/<?= $pelicula['id']; ?>" method="post">
+        <?= view('/dashboard/pelicula/include/form',['op' => 'Update']); ?>
     </form>
-    <p><a href="/pelicula">back</a></p>
+    <p><a href="/dashboard/pelicula">back</a></p>
 </body>
 </html>
