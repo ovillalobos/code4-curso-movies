@@ -1,6 +1,7 @@
 <?php
 
 namespace Config;
+use App\Controllers\Dashboard\Pelicula;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
@@ -39,18 +40,35 @@ $routes->set404Override();
 // CRUD
 $routes->group('dashboard', function($routes){
     $routes->presenter('pelicula', [
-        'controller' => 'Dashboard\Pelicula'
+        //'controller' => 'Dashboard\Pelicula',
+        'namespace' => 'App\Controllers\Dashboard'
     ]);
+
     $routes->presenter('categoria',[
         //'only' => ['index','create']
         //'except' => ['show']
         'controller' => 'Dashboard\Categoria'
     ]);
 
+    //RENOMBRAR CONTROLADOR
     //$routes->get('test', 'Dashboard\Pelicula::test', ['as' => 'pelicula.test']);
+    //UTILIZAR NAMESPACE EN CONTROLADOR
+    //$routes->get('test', 'Pelicula::test', ['namespace' => 'App\Controllers\Dashboard']);
+    //UTILIZAR ARRAY QUE NOS AYUDA A AGREGAR LOS PARAMETROS AUTOMATICAMENTE
+    $routes->get('test', [\App\Controllers\Dashboard\Pelicula::class, 'test']); //Sin usar el USE que esta declarado arriba
+    $routes->get('test/(:num)', [Pelicula::class, 'test']);
 });
 
+//TIPOS DE ARGUMENTOS
+/*
+(:any) Todos los caracteres
+(:segmento) Todos los caracteres excepto (/)
+(:num) Numero entero
+(:alpha) Caracteres alfabeticos
+(:alphanum) Caracteres alfabeticos/numeros combinacion
+(:hash) Lo mismo que segmento, pero se usa para identificadores
 
+*/
 /*
  * --------------------------------------------------------------------
  * Additional Routing

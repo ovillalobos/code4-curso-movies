@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <?= view('/dashboard/categoria/include/header',['title' => 'Categorias']); ?>
+        <?= view('/partials/header',['title' => 'Categorias']); ?>
     </head>
     <body>
         <h1>Listado de categorias</h1>
+
+        <?= view('partials/session'); ?>
+
         <a href="/dashboard/categoria/new/">Create</a>
         <table border="1">
             <tr>

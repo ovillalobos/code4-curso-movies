@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?= view('/dashboard/categoria/include/header',['title' => 'Categoria - '.$categoria['title'] ]); ?>
+    <?= view('/partials/header',['title' => 'Categoria - '.$categoria['title'] ]); ?>
 </head>
 <body>
     <h1>Category</h1>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?= view('/dashboard/categoria/include/header',['title' => 'Create cateogory']); ?>
+        <?= view('/partials/header',['title' => 'Create cateogory']); ?>
     </head>
     <body>
-        <h1>Create category</h1>
+        <h1>Crear categoria</h1>
         <form action="/dashboard/categoria/create" method="post">
             <?= view('/dashboard/categoria/include/form',['op' => 'Create']); ?>
         </form>        

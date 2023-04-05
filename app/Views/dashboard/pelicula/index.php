@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peliculas</title>
+    <?= view('/partials/header',['title' => 'Peliculas']); ?>
 </head>
 <body>
-    <h1>Listado de peliculas</h1>
+    <h1>Listado de peliculas</h1>    
+    <?= view('partials/session'); ?>
+
     <a href="/dashboard/pelicula/new/">Create</a>
     <table border="1">
         <tr>
@@ -31,5 +30,7 @@
             </tr>
         <?php endforeach ?>
     </table>
+
+    <?= view('/dashboard/pelicula/include/footer',['option' => 'categoria']); ?>
 </body>
 </html>

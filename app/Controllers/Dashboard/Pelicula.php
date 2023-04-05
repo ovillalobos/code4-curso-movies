@@ -52,7 +52,9 @@ class Pelicula extends BaseController
 
         $this->peliculaModel->insert($data);
 
-        return redirect()->to('/dashboard/pelicula');
+        return redirect()->to('/dashboard/pelicula')->with(
+            'mensaje', 'Registro creado correctamente'
+        );
     }
     
     public function edit($id)
@@ -78,7 +80,9 @@ class Pelicula extends BaseController
         //return redirect()->to('/dashboard/pelicula'); // Regresa a una pagina especifica
         //return redirect()->route('pelicula.test'); // Regresa a una ruta especifica { $routes->get('test', 'Pelicula::test', ['as' => 'pelicula.test']); }
 
-        return redirect()->to('/dashboard/pelicula');
+        return redirect()->to('/dashboard/pelicula')->with(
+            'mensaje','Registro actualizado correctamente'
+        );;
     }
 
     public function delete($id)
@@ -87,11 +91,19 @@ class Pelicula extends BaseController
 
         echo "deleted";
 
-        return redirect()->to('/dashboard/pelicula');
+        return redirect()->to('/dashboard/pelicula')->with(
+            'mensaje','Registro eliminado correctamente'
+        );;
     }
 
-    public function test()
+    public function test($arr = 0)
     {
-        echo "Hello world";
+        if($arr != 0){
+            $testContent = "Hello world <strong>TEST - ".$arr."</strong>";
+        } else {
+            $testContent = "Hello world <strong>TEST</strong>";
+        }        
+
+        echo "<h3>".$testContent."</h3>";
     }
 }
