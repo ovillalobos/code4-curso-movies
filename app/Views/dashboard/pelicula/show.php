@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?= view('/partials/header',['title' => 'Pelicula - '. $pelicula['title']]); ?>
-</head>
-<body>
+<?= $this->extend('layouts/dashboard') ?>
+
+<?= $this->section('header-title') ?>
+    Pelicula - <?= $pelicula['title'] ?>
+<?= $this->endSection() ?>
+
+<?= $this->section('title') ?>
+    Mostrar pelicula
+<?= $this->endSection() ?>
+
+<?= $this->section('contenido') ?>
     <h1><?= $pelicula['title']; ?></h1>
     <p><?= $pelicula['description']; ?></p>
 
     <?= view('/dashboard/pelicula/include/footer',['option' => 'back']); ?>
-</body>
-</html>
+<?= $this->endSection() ?>

@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?= view('/partials/header',['title' => 'Peliculas']); ?>
-</head>
-<body>
-    <h1>Crear pelicula</h1>
+<?= $this->extend('layouts/dashboard') ?>
+
+<?= $this->section('header-title') ?>
+    Pelicula - crear
+<?= $this->endSection() ?>
+
+<?= $this->section('title') ?>
+    Crear pelicula
+<?= $this->endSection() ?>
+
+<?= $this->section('contenido') ?>
     <form action="/dashboard/pelicula/create" method="post">
         <?= view('/dashboard/pelicula/include/form',['op' => 'Create']); ?>
     </form>
 
     <?= view('/dashboard/pelicula/include/footer',['option' => 'back']); ?>
-</body>
-</html>
+<?= $this->endSection() ?>

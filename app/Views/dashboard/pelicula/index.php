@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <?= view('/partials/header',['title' => 'Peliculas']); ?>
-</head>
-<body>
-    <h1>Listado de peliculas</h1>    
-    <?= view('partials/session'); ?>
+<?= $this->extend('layouts/dashboard') ?>
 
+<?= $this->section('header-title') ?>
+    Pelicula - listado
+<?= $this->endSection() ?>
+
+<?= $this->section('title') ?>
+    Listado de pelicula
+<?= $this->endSection() ?>
+
+<?= $this->section('contenido') ?>
     <a href="/dashboard/pelicula/new/">Create</a>
+
     <table border="1">
         <tr>
             <th>Id</th>
@@ -32,5 +35,4 @@
     </table>
 
     <?= view('/dashboard/pelicula/include/footer',['option' => 'categoria']); ?>
-</body>
-</html>
+<?= $this->endSection() ?>

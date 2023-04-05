@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?= view('/partials/header',['title' => 'Categoria - '.$categoria['title'] ]); ?>
-</head>
-<body>
-    <h1>Category</h1>
+<?= $this->extend('layouts/dashboard') ?>
+
+<?= $this->section('header-title') ?>
+    Categoria - <?= $categoria['title'] ?>
+<?= $this->endSection() ?>
+
+<?= $this->section('title') ?>
+    Mostrar categoria
+<?= $this->endSection() ?>
+
+<?= $this->section('contenido') ?>
     <p><?= $categoria['title']; ?></p>
     <?= view('/dashboard/categoria/include/footer',['option' => 'back']); ?>
-</body>
-</html>
+<?= $this->endSection() ?>

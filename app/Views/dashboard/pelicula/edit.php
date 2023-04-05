@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?= view('/partials/header',['title' => 'Peliculas']); ?>
-</head>
-<body>
-    <h1>Editar pelicula</h1>
+<?= $this->extend('layouts/dashboard') ?>
+
+<?= $this->section('header-title') ?>
+    Pelicula - editar
+<?= $this->endSection() ?>
+
+<?= $this->section('title') ?>
+    Editar pelicula
+<?= $this->endSection() ?>
+
+<?= $this->section('contenido') ?>
     <form action="/dashboard/pelicula/update/<?= $pelicula['id']; ?>" method="post">
         <?= view('/dashboard/pelicula/include/form',['op' => 'Update']); ?>
     </form>
 
     <?= view('/dashboard/pelicula/include/footer',['option' => 'back']); ?>
-</body>
-</html>
+<?= $this->endSection() ?>
