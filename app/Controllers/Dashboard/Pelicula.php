@@ -45,16 +45,24 @@ class Pelicula extends BaseController
 
     public function create()
     {
-        $data = [
-            'title' => $this->request->getPost('title'),
-            'description' => $this->request->getPost('description')
-        ];
+        if( $this->validate('peliculas') ){
+            $data = [
+                'title' => $this->request->getPost('title'),
+                'description' => $this->request->getPost('description')
+            ];
 
-        $this->peliculaModel->insert($data);
+            $this->peliculaModel->insert($data);
 
-        return redirect()->to('/dashboard/pelicula')->with(
-            'mensaje', 'Registro creado correctamente'
-        );
+            return redirect()->to('/dashboard/pelicula')->with(
+                'mensaje', 'Registro creado correctamente'
+            );
+        } else {
+            session()->setFlashdata([
+                'validation' => $this->validator
+            ]);
+
+            return redirect()->back()->withInput();
+        }
     }
     
     public function edit($id)
@@ -67,22 +75,30 @@ class Pelicula extends BaseController
     }
 
     public function update($id)
-    {
-        $data = [
-            'title' => $this->request->getPost('title'),
-            'description' => $this->request->getPost('description')
-        ];
+    {        
+        if( $this->validate('peliculas') ){
+            $data = [
+                'title' => $this->request->getPost('title'),
+                'description' => $this->request->getPost('description')
+            ];
+    
+            $this->peliculaModel->update($id, $data);
 
-        $this->peliculaModel->update($id, $data);
+            //REDIRECCIONE
+            //return redirect()->back(); // Regresa a la pagina anterior
+            //return redirect()->to('/dashboard/pelicula'); // Regresa a una pagina especifica
+            //return redirect()->route('pelicula.test'); // Regresa a una ruta especifica { $routes->get('test', 'Pelicula::test', ['as' => 'pelicula.test']); }
+            return redirect()->to('/dashboard/pelicula')->with(
+                'mensaje','Registro actualizado correctamente'
+            );
+        }  else {
+            // $this->validator->getError('title')
+            session()->setFlashdata([
+                'validation' => $this->validator
+            ]);
 
-        //REDIRECCIONE
-        //return redirect()->back(); // Regresa a la pagina anterior
-        //return redirect()->to('/dashboard/pelicula'); // Regresa a una pagina especifica
-        //return redirect()->route('pelicula.test'); // Regresa a una ruta especifica { $routes->get('test', 'Pelicula::test', ['as' => 'pelicula.test']); }
-
-        return redirect()->to('/dashboard/pelicula')->with(
-            'mensaje','Registro actualizado correctamente'
-        );;
+            return redirect()->back()->withInput();
+        }               
     }
 
     public function delete($id)
