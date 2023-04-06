@@ -14,7 +14,14 @@ class Pelicula extends BaseController
     }
 
     public function index()
-    {
+    {   
+        //HELP-> PARA VERIFICAR COMO ESTA CONSTRUIDA LA CONSULTA
+        /*
+        $db = \Config\Database::connect();
+        $builder = $db->table('peliculas');
+        return $builder->limit(10,20)->getCompiledSelect();
+        */
+
         $data = [
             'peliculas' => $this->peliculaModel->findAll()
         ];
@@ -25,10 +32,7 @@ class Pelicula extends BaseController
     public function new()
     {
         $data = [
-            'pelicula' => [
-                'title' => '',
-                'description' => ''
-            ]
+            'pelicula' => new PeliculaModel()
         ];
 
         echo view('/dashboard/pelicula/new', $data);
@@ -36,6 +40,10 @@ class Pelicula extends BaseController
 
     public function show($id)
     {
+        // Podemos hacer esta modificacion al nivel del modelo con  protected $returnType = 'array';
+        //var_dump($this->peliculaModel->asArray()->find($id));     //Obtiene los valores como array (default)
+        //var_dump($this->peliculaModel->asObject()->find($id));    //Obtiene los valores como objeto
+        
         $data = [
             'pelicula' => $this->peliculaModel->find($id)
         ];

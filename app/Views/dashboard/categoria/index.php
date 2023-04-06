@@ -17,14 +17,14 @@
             <th>Title</th>
             <th>Options</th>
         </tr>
-        <?php foreach ($categoria as $key => $p): ?>
+        <?php foreach ($categorias as $key => $categoria): ?>
             <tr>
-                <td><?= $p['id']; ?></td>
-                <td><?= $p['title']; ?></td>
+                <td><?= $categoria->id; ?></td>
+                <td><?= $categoria->title; ?></td>
                 <td>
-                    <a href="/dashboard/categoria/show/<?= $p['id'] ?>">Show</a>
-                    <a href="/dashboard/categoria/edit/<?= $p['id'] ?>">Edit</a>
-                    <form action="/dashboard/categoria/delete/<?= $p['id'] ?>" method="post">
+                    <a href="/dashboard/categoria/show/<?= $categoria->id ?>">Show</a>
+                    <a href="/dashboard/categoria/edit/<?= $categoria->id ?>">Edit</a>
+                    <form action="/dashboard/categoria/delete/<?= $categoria->id ?>" method="post">
                         <button type="submit">Delete</button>
                     </form>
                 </td>

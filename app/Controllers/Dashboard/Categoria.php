@@ -18,7 +18,7 @@ class Categoria extends BaseController
     public function index()
     {        
         $data = [
-            'categoria' => $this->categoriaModel->findAll()
+            'categorias' => $this->categoriaModel->findAll()
         ];
 
         echo view('dashboard/categoria/index', $data);
@@ -28,9 +28,7 @@ class Categoria extends BaseController
     {
         //session()->destroy();
         $data = [
-            'categoria' => [
-                'title' => ''
-            ]
+            'categoria' => new CategoriaModel()
         ];
 
         echo view('dashboard/categoria/new', $data);

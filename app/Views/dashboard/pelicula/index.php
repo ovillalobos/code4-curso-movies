@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/dashboard') ?>
+<?= $this->extend('layouts/dashboard') ?>title
 
 <?= $this->section('header-title') ?>
     Pelicula - listado
@@ -18,15 +18,15 @@
             <th>Description</th>
             <th>Options</th>
         </tr>
-        <?php foreach ($peliculas as $key => $p): ?>
+        <?php foreach ($peliculas as $key => $pelicula): ?>
             <tr>
-                <td><?= $p['id']; ?></td>
-                <td><?= $p['title']; ?></td>
-                <td><?= $p['description']; ?></td>
+                <td><?= $pelicula->id ?></td>
+                <td><?= $pelicula->title ?></td>
+                <td><?= $pelicula->description ?></td>
                 <td>
-                    <a href="/dashboard/pelicula/show/<?= $p['id'] ?>">Show</a>
-                    <a href="/dashboard/pelicula/edit/<?= $p['id'] ?>">Edit</a>
-                    <form action="/dashboard/pelicula/delete/<?= $p['id'] ?>" method="post">
+                    <a href="/dashboard/pelicula/show/<?= $pelicula->id ?>">Show</a>
+                    <a href="/dashboard/pelicula/edit/<?= $pelicula->id ?>">Edit</a>
+                    <form action="/dashboard/pelicula/delete/<?= $pelicula->id ?>" method="post">
                         <button type="submit">Delete</button>
                     </form>
                 </td>

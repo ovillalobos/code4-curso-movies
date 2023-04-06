@@ -1,7 +1,7 @@
 <?= $this->extend('layouts/dashboard') ?>
 
 <?= $this->section('header-title') ?>
-    Categoria - <?= $categoria['title'] ?>
+    Categoria - <?= $categoria->title ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('title') ?>
@@ -9,6 +9,6 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('contenido') ?>
-    <p><?= $categoria['title']; ?></p>
+    <p><?= $categoria->title ?></p>
     <?= view('/dashboard/categoria/include/footer',['option' => 'back']); ?>
 <?= $this->endSection() ?>
