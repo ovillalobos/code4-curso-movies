@@ -56,8 +56,29 @@ $routes->group('dashboard', function($routes){
     //$routes->get('test', 'Pelicula::test', ['namespace' => 'App\Controllers\Dashboard']);
     //UTILIZAR ARRAY QUE NOS AYUDA A AGREGAR LOS PARAMETROS AUTOMATICAMENTE
     $routes->get('test', [\App\Controllers\Dashboard\Pelicula::class, 'test']); //Sin usar el USE que esta declarado arriba
-    $routes->get('test/(:num)', [Pelicula::class, 'test']);
+    $routes->get('test/(:num)', [Pelicula::class, 'test']); //Utilizando el USE
+
+    //SIN USAR NAMESPACE
+    $routes->get('usuario/crear',[\App\Controllers\Web\Usuario::class, 'crear_usuario_auto']);
+    $routes->get('usuario/probar/password',[\App\Controllers\Web\Usuario::class, 'probar_password']);
 });
+
+$routes->get('login', [\App\Controllers\Web\Usuario::class, 'login'],[
+    'as' => 'usuario.login'
+]);
+$routes->post('login', [\App\Controllers\Web\Usuario::class, 'login_post'],[
+    'as' => 'usuario.login_post'
+]);
+$routes->get('register', [\App\Controllers\Web\Usuario::class, 'register'],[
+    'as' => 'usuario.register'
+]);
+$routes->post('register', [\App\Controllers\Web\Usuario::class, 'register_post'],[
+    'as' => 'usuario.register_post'
+]);
+$routes->get('logout', [\App\Controllers\Web\Usuario::class, 'logout'],[
+    'as' => 'usuario.logout'
+]);
+
 
 //TIPOS DE ARGUMENTOS
 /*

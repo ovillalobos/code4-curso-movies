@@ -9,7 +9,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('contenido') ?>
-    <a href="/dashboard/pelicula/new/">Create</a>
+    <a href="<?= route_to('usuario.logout') ?>">Logout</a> | <a href="/dashboard/pelicula/new/">Create</a>
 
     <table border="1">
         <tr>

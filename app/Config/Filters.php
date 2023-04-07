@@ -9,6 +9,9 @@ use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
 
+use App\Filters\MiFiltro;
+use App\Filters\DashboardFilter;
+
 class Filters extends BaseConfig
 {
     /**
@@ -21,6 +24,8 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'mifiltro'      => MiFiltro::class, 
+        'dashboardFilter'   => DashboardFilter::class,
     ];
 
     /**
@@ -60,5 +65,20 @@ class Filters extends BaseConfig
      * Example:
      * 'isLoggedIn' => ['before' => ['account/*', 'profiles/*']]
      */
-    public array $filters = [];
+    public array $filters = [
+        'dashboardFilter' => [
+            'before' => [
+                'dashboard',
+                'dashboard/*'
+            ]
+        ]
+        /*
+        'mifiltro' => [
+            'before' => [
+                'dashboard/pelicula',
+                'dashboard/pelicula/*'
+            ]
+        ]
+        */
+    ];
 }
