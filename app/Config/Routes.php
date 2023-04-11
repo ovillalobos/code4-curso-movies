@@ -2,6 +2,7 @@
 
 namespace Config;
 use App\Controllers\Dashboard\Pelicula;
+use CodeIgniter\Router\Router;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
@@ -37,6 +38,13 @@ $routes->set404Override();
 //$routes->get('/', 'Home::index');
 //$routes->get('/pelicula', 'PeliculaController::index');
 
+
+// CRUD HTTP API-REST
+$routes->group('api', ['namespace' => 'App\Controllers\Api'], function($routes){
+    $routes->resource('pelicula');
+    $routes->resource('categoria');
+});
+
 // CRUD
 $routes->group('dashboard', function($routes){
     $routes->presenter('pelicula', [
@@ -53,7 +61,7 @@ $routes->group('dashboard', function($routes){
     //RENOMBRAR CONTROLADOR
     //$routes->get('test', 'Dashboard\Pelicula::test', ['as' => 'pelicula.test']);
     //UTILIZAR NAMESPACE EN CONTROLADOR
-    //$routes->get('test', 'Pelicula::test', ['namespace' => 'App\Controllers\Dashboard']);
+    //$routes->get('test', 'Pelicula::test', ['namespace' => 'App\Controllers\Dashboacleard']);
     //UTILIZAR ARRAY QUE NOS AYUDA A AGREGAR LOS PARAMETROS AUTOMATICAMENTE
     $routes->get('test', [\App\Controllers\Dashboard\Pelicula::class, 'test']); //Sin usar el USE que esta declarado arriba
     $routes->get('test/(:num)', [Pelicula::class, 'test']); //Utilizando el USE
