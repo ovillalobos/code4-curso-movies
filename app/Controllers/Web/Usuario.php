@@ -104,4 +104,9 @@ class Usuario extends BaseController
     {
         echo $this->usuarioModel->passwordValidate('123456', '$2y$10$RNfngCJzJwOTri5mrExhJOWwMdH5SN6EnIhlKQoaW/xdtecCJzs2e');
     }
+
+    public function map()
+    {
+        echo view('web/map');
+    }
 }

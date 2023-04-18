@@ -9,21 +9,23 @@ class CategoriaSeeder extends Seeder
 {
     public function run()
     {
-        // OPTION 1
-        //$categoriaModel = new CategoriaModel();
+        // MODELS        
         $categoriaModel = new CategoriaModel();
-        $categoriaModel->where('id >= 1')->delete();
+
+        // SETTINGS
         $count = 1;
         $totalRecords = 20;
+
         for ($i=0; $i < $totalRecords; $i++) { 
             $categoriaModel->insert(
                 [
-                    'title' => "Categoria (Seeder) $count"
+                    'title' => "Categoria $count"
                 ]
             );
 
             $count++;
         }
+
         // OPTION 2
         //$this->db->table('categorias');
         /*

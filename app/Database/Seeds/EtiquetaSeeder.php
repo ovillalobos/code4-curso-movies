@@ -2,17 +2,17 @@
 
 namespace App\Database\Seeds;
 
-use App\Models\PeliculaModel;
 use App\Models\CategoriaModel;
+use App\Models\EtiquetaModel;
 
 use CodeIgniter\Database\Seeder;
 
-class PeliculaSeeder extends Seeder
+class EtiquetaSeeder extends Seeder
 {
     public function run()
     {
         // MODELS
-        $peliculaModel = new PeliculaModel();
+        $etiquetaModel = new EtiquetaModel();
         $categoriaModel = new CategoriaModel();
         // QUERYS
         $categorias = $categoriaModel->limit(7)->find();        
@@ -22,16 +22,15 @@ class PeliculaSeeder extends Seeder
 
         foreach ($categorias as $categoria) {
             for ($i=0; $i < $totalRecords; $i++) { 
-                $peliculaModel->insert(
+                $etiquetaModel->insert(
                     [
-                        'title' => "Pelicula $count",
-                        'categoria_id' => $categoria->id,
-                        'description' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+                        'title' => "Etiqueta $count",
+                        'categoria_id' => $categoria->id
                     ]
                 );
     
                 $count++;
             }
-        }        
+        }
     }
 }

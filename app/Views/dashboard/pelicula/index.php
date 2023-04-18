@@ -16,16 +16,21 @@
             <th>Id</th>
             <th>Title</th>
             <th>Description</th>
+            <th>Categoria</th>
             <th>Options</th>
         </tr>
+        <?php $count = 1; ?>
         <?php foreach ($peliculas as $key => $pelicula): ?>
             <tr>
-                <td><?= $pelicula->id ?></td>
+                <td><?= $count++ ?></td>
                 <td><?= $pelicula->title ?></td>
+                <td><?= $pelicula->categoria ?></td>
                 <td><?= $pelicula->description ?></td>
                 <td>
                     <a href="/dashboard/pelicula/show/<?= $pelicula->id ?>">Show</a>
                     <a href="/dashboard/pelicula/edit/<?= $pelicula->id ?>">Edit</a>
+                    <a href="<?= route_to('pelicula.etiquetas', $pelicula->id) ?>">Tags</a>
+
                     <form action="/dashboard/pelicula/delete/<?= $pelicula->id ?>" method="post">
                         <button type="submit">Delete</button>
                     </form>

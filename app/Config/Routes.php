@@ -47,7 +47,17 @@ $routes->group('api', ['namespace' => 'App\Controllers\Api'], function($routes){
 
 // CRUD
 $routes->group('dashboard', function($routes){
+    //ETIQUETAS
+    $routes->get('pelicula/etiqueta/(:num)', [\App\Controllers\Dashboard\Pelicula::class, 'etiquetas/$1'], ['as' => 'pelicula.etiquetas'] );
+    $routes->post('pelicula/etiqueta/(:num)', [\App\Controllers\Dashboard\Pelicula::class, 'etiquetas_post/$1'], ['as' => 'pelicula.etiquetas'] );
+    $routes->post('pelicula/(:num)/etiqueta/(:num)/delete', [\App\Controllers\Dashboard\Pelicula::class, 'etiqueta_delete/$1/$2'], ['as' => 'pelicula.etiqueta_delete']);
+
     $routes->presenter('pelicula', [
+        //'controller' => 'Dashboard\Pelicula',
+        'namespace' => 'App\Controllers\Dashboard'
+    ]);
+
+    $routes->presenter('etiqueta', [
         //'controller' => 'Dashboard\Pelicula',
         'namespace' => 'App\Controllers\Dashboard'
     ]);
@@ -69,6 +79,7 @@ $routes->group('dashboard', function($routes){
     //SIN USAR NAMESPACE
     $routes->get('usuario/crear',[\App\Controllers\Web\Usuario::class, 'crear_usuario_auto']);
     $routes->get('usuario/probar/password',[\App\Controllers\Web\Usuario::class, 'probar_password']);
+
 });
 
 $routes->get('login', [\App\Controllers\Web\Usuario::class, 'login'],[
@@ -85,6 +96,9 @@ $routes->post('register', [\App\Controllers\Web\Usuario::class, 'register_post']
 ]);
 $routes->get('logout', [\App\Controllers\Web\Usuario::class, 'logout'],[
     'as' => 'usuario.logout'
+]);
+$routes->get('map', [\App\Controllers\Web\Usuario::class, 'map'],[
+    'as' => 'usuario.map'
 ]);
 
 
