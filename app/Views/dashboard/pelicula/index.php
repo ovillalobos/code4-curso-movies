@@ -15,8 +15,8 @@
         <tr>
             <th>Id</th>
             <th>Title</th>
-            <th>Description</th>
             <th>Categoria</th>
+            <th>Description</th>            
             <th>Options</th>
         </tr>
         <?php $count = 1; ?>

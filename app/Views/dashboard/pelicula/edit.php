@@ -9,7 +9,8 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('contenido') ?>
-    <form action="/dashboard/pelicula/update/<?= $pelicula->id; ?>" method="post">
+    <!-- enctype="multipart/form-data" => ES NECESARIO PARA SUBIR ARCHIVOS -->
+    <form enctype="multipart/form-data" action="/dashboard/pelicula/update/<?= $pelicula->id; ?>" method="post">
         <?= view('/dashboard/pelicula/include/form',['op' => 'Update']); ?>
     </form>
 

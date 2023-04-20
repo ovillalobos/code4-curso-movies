@@ -50,7 +50,14 @@ $routes->group('dashboard', function($routes){
     //ETIQUETAS
     $routes->get('pelicula/etiqueta/(:num)', [\App\Controllers\Dashboard\Pelicula::class, 'etiquetas/$1'], ['as' => 'pelicula.etiquetas'] );
     $routes->post('pelicula/etiqueta/(:num)', [\App\Controllers\Dashboard\Pelicula::class, 'etiquetas_post/$1'], ['as' => 'pelicula.etiquetas'] );
-    $routes->post('pelicula/(:num)/etiqueta/(:num)/delete', [\App\Controllers\Dashboard\Pelicula::class, 'etiqueta_delete/$1/$2'], ['as' => 'pelicula.etiqueta_delete']);
+    $routes->post('pelicula/(:num)/etiqueta/(:num)/delete', [\App\Controllers\Dashboard\Pelicula::class, 'etiqueta_delete/$1/$2'], ['as' => 'pelicula.etiqueta_delete']);    
+    //SOLO ELIMINADO IMAGEN Y SU RELACION CON UNA PELICULA
+    //$routes->post('pelicula/delete_image/(:num)', [\App\Controllers\Dashboard\Pelicula::class, 'delete_image/$1'], ['as' => 'pelicula.delete_image'] );
+    //ELIMINADO LA IMAGEN, PELICULA Y SUS RELACIONES
+    $routes->post('pelicula/delete_image/(:num)/(:num)', [\App\Controllers\Dashboard\Pelicula::class, 'delete_image/$1/$2'], ['as' => 'pelicula.delete_image'] );
+    $routes->get('pelicula/download_file/(:num)', [\App\Controllers\Dashboard\Pelicula::class, 'download_file/$1'], ['as' => 'pelicula.download_file'] );
+    //TEST IMAGE SECURE
+    $routes->get('pelicula/openfile/(:any)', [\App\Controllers\Dashboard\Pelicula::class, 'open_fileSecure/$1']);
 
     $routes->presenter('pelicula', [
         //'controller' => 'Dashboard\Pelicula',

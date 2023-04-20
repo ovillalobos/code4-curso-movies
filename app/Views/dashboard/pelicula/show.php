@@ -12,12 +12,25 @@
     <h1><?= $pelicula->title ?></h1>
     <p><?= $pelicula->description ?></p>
 
-    <h3>Imagenes</h3>
-    <ul>
-        <?php foreach($imagenes as $imagen): ?>
-            <li><?= $imagen->imagen.".".$imagen->extension." - ".$imagen->data ?></li>
-        <?php endforeach ?>
-    </ul>
+    <h3>Categoria</h3>
+    <p><?= $pelicula->categoria ?></p>
+
+    <?php if(isset($imagenes) && $imagenes!= null):?>
+        <h3>Imagenes</h3>
+        <ul>
+            <?php foreach($imagenes as $imagen): ?>
+                <li>
+                    <img src="/uploads/peliculas/<?= $imagen->imagen ?>" alt="<?= $imagen->data ?>" width="200px">
+                    <form action="<?= route_to('pelicula.delete_image', $pelicula->id, $imagen->id)?>" method="post">
+                        <button type="submit">Borrar</button>
+                    </form>
+                    <form action="<?= route_to('pelicula.download_file', $imagen->id)?>" method="get">
+                        <button type="submit">Download</button>
+                    </form>
+                </li>
+            <?php endforeach ?>
+        </ul>
+    <?php endif ?>
 
     <h3>Etiquetas</h3>
     <?php foreach($etiquetas as $etiqueta): ?>        

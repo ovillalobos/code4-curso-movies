@@ -18,6 +18,15 @@ class PeliculaModel extends Model
                         ->join('categorias', 'categorias.id = peliculas.categoria_id')
                         ->find();
     }
+    public function getPeliculaCategoriaByID($id)
+    {
+        return $this    ->select('  peliculas.id, peliculas.title, peliculas.description, 
+                                    categorias.title as categoria')
+                        ->join('categorias', 'categorias.id = peliculas.categoria_id')
+                        ->where('peliculas.id',$id)
+                        ->first($id);
+    }
+
 
     public function getImagesById($id)
     {
