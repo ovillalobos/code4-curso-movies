@@ -19,8 +19,11 @@ class Etiqueta extends BaseController
 
     public function index()
     {   
+        $totalPages = 10;
+
         $data = [
-            'etiquetas' => $this->etiquetaModel->getEtiquetaCategoria()                                
+            'etiquetas' => $this->etiquetaModel->getEtiquetaCategoria($totalPages),
+            'pager' => $this->etiquetaModel->pager
         ];        
 
         echo view('/dashboard/etiqueta/index', $data);

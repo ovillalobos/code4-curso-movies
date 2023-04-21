@@ -17,8 +17,12 @@ class Categoria extends BaseController
 
     public function index()
     {        
+        $totalPages = 10;
+
         $data = [
-            'categorias' => $this->categoriaModel->findAll()
+            //'categorias' => $this->categoriaModel->findAll()
+            'categorias' => $this->categoriaModel->paginate($totalPages),
+            'pager' => $this->categoriaModel->pager
         ];
 
         echo view('dashboard/categoria/index', $data);

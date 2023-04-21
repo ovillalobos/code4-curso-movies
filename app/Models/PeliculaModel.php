@@ -11,12 +11,13 @@ class PeliculaModel extends Model
     protected $returnType       = 'object'; //{ array/object }
     protected $allowedFields    = ['title', 'description', 'categoria_id'];
 
-    public function getCategoriaByPelicula()
+    public function getCategoriaByPelicula($totalPages)
     {
         return $this    ->select('  peliculas.id, peliculas.title, peliculas.description, 
                                     categorias.title as categoria')
                         ->join('categorias', 'categorias.id = peliculas.categoria_id')
-                        ->find();
+                        ->paginate($totalPages);
+                        //->find();
     }
     public function getPeliculaCategoriaByID($id)
     {

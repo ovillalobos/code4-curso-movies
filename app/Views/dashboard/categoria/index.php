@@ -32,5 +32,7 @@
         <?php endforeach ?>
     </table>    
 
+    <?= $pager->links() ?>
+
     <?= view('/dashboard/categoria/include/footer',['option' => 'pelicula']); ?>
 <?= $this->endSection() ?>

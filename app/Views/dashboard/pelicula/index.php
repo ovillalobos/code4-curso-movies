@@ -13,7 +13,7 @@
 
     <table border="1">
         <tr>
-            <th>Id</th>
+            <th>#</th>
             <th>Title</th>
             <th>Categoria</th>
             <th>Description</th>            
@@ -38,6 +38,8 @@
             </tr>
         <?php endforeach ?>
     </table>
+
+    <?= $pager->links() ?>
 
     <?= view('/dashboard/pelicula/include/footer',['option' => 'categoria']); ?>
 <?= $this->endSection() ?>

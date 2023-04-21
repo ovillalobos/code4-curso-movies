@@ -34,6 +34,8 @@
             </tr>
         <?php endforeach ?>
     </table>
+    
+    <?= $pager->links() ?>
 
     <?= view('/dashboard/etiqueta/include/footer',['option' => 'categoria']); ?>
 <?= $this->endSection() ?>

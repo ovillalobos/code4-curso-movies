@@ -51,8 +51,13 @@ abstract class BaseController extends Controller
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
-        // Preload any models, libraries, etc, here.
+        // CARGA DE HELPERS DESDE BASECONTROLLER
+        //helper(['cookie', 'date']);
 
+        //timezone_select('custom-select', 'US/Arizona'); //CODIGNITER
+        //date_default_timezone_set('US/Arizona'); //NATIVO
+        // Preload any models, libraries, etc, here.
+        
         // E.g.: $this->session = \Config\Services::session();
     }
 }

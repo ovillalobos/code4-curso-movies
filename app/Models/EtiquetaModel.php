@@ -11,14 +11,15 @@ class EtiquetaModel extends Model
     protected $returnType       = 'object';
     protected $allowedFields    = ['title', 'categoria_id'];
 
-    public function getEtiquetaCategoria()
+    public function getEtiquetaCategoria($totalPages)
     {
         return $this    ->select('  etiquetas.id as etiqueta_id, 
                                     etiquetas.title as etiqueta_title,
                                     ca.title as etiqueta_categoria')
                         ->join('categorias as ca', 'etiquetas.categoria_id = ca.id')
                         ->orderBy('etiquetas.id', 'asc')
-                        ->findAll();
+                        ->paginate($totalPages);
+                        //->findAll();
     }
 
     public function getEtiquetaCategoriaByID($id)

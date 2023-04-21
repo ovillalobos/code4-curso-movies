@@ -4,6 +4,7 @@ namespace App\Controllers\Dashboard;
 
 use App\Controllers\BaseController;
 use App\Database\Migrations\PeliculaEtiqueta;
+
 use App\Models\PeliculaModel;
 use App\Models\CategoriaModel;
 use App\Models\EtiquetaModel;
@@ -19,7 +20,7 @@ class Pelicula extends BaseController
     private $etiquetaModel;
     private $filePath;
 
-    function __construct() {
+    public function __construct() {
         $this->peliculaModel = new PeliculaModel();
         $this->categoriaModel = new CategoriaModel();
         $this->etiquetaModel = new EtiquetaModel();
@@ -40,9 +41,14 @@ class Pelicula extends BaseController
         //CONSULTA SIMPLE
         //$data = [ 'peliculas' => $this->peliculaModel->findAll() ];
 
+        //UTILIZACION DE HELPERS
+        //echo now();
+
+        $totalPages = 10;
+
         $data = [
-            'peliculas' => $this->peliculaModel->getCategoriaByPelicula()
-                                
+            'peliculas' => $this->peliculaModel->getCategoriaByPelicula($totalPages),
+            'pager' => $this->peliculaModel->pager
         ];        
 
         echo view('/dashboard/pelicula/index', $data);
@@ -266,15 +272,17 @@ class Pelicula extends BaseController
 
     private function update_peliculaImagen($peliculaId, $imageName, $ext)
     {
+        helper(['filesystem']);
+
         $imagenModel = new ImagenModel();
         $peliculaImagenModel = new PeliculaImagenModel();
 
         $imagenId = $imagenModel->insert([
             'imagen' => $imageName,
             'extension' => $ext,
-            'data' => MD5($imageName) //Aqui se agerga algo descriptivo de la imagen
+            'data' => json_encode( get_file_info('../public/uploads/peliculas/'.$imageName) ) //Aqui se agerga algo descriptivo de la imagen
         ]);
-        
+
         $peliculaImagenModel->insert([
             'pelicula_id' => $peliculaId,
             'imagen_id' => $imagenId
@@ -313,7 +321,7 @@ class Pelicula extends BaseController
     }
 
     public function download_file($image_id)
-    {
+    {        
         date_default_timezone_set('US/Arizona');
         $imagenModel = new ImagenModel();
 
