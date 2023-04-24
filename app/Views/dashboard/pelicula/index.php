@@ -1,45 +1,51 @@
-<?= $this->extend('layouts/dashboard') ?>title
+<?= $this->extend('layouts/dashboard') ?>
 
 <?= $this->section('header-title') ?>
     Pelicula - listado
 <?= $this->endSection() ?>
 
 <?= $this->section('title') ?>
-    Listado de pelicula
+    <h1>Listado de pelicula</h1>
+    <a href="/dashboard/pelicula/new/" class="btn btn-primary btn-sm">Create</a>
 <?= $this->endSection() ?>
 
 <?= $this->section('contenido') ?>
-    <a href="<?= route_to('usuario.logout') ?>">Logout</a> | <a href="/dashboard/pelicula/new/">Create</a>
+    
 
-    <table border="1">
-        <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Categoria</th>
-            <th>Description</th>            
-            <th>Options</th>
-        </tr>
-        <?php $count = 1; ?>
-        <?php foreach ($peliculas as $key => $pelicula): ?>
-            <tr>
-                <td><?= $count++ ?></td>
-                <td><?= $pelicula->title ?></td>
-                <td><?= $pelicula->categoria ?></td>
-                <td><?= $pelicula->description ?></td>
-                <td>
-                    <a href="/dashboard/pelicula/show/<?= $pelicula->id ?>">Show</a>
-                    <a href="/dashboard/pelicula/edit/<?= $pelicula->id ?>">Edit</a>
-                    <a href="<?= route_to('pelicula.etiquetas', $pelicula->id) ?>">Tags</a>
-
-                    <form action="/dashboard/pelicula/delete/<?= $pelicula->id ?>" method="post">
-                        <button type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        <?php endforeach ?>
-    </table>
-
+    <div class="table-responsive">
+        <table class="table table-sm table-hover align-middle">
+            <thead>
+                <tr>
+                    <th width="80px">#</th>
+                    <th width="150px">Title</th>
+                    <th width="150px">Categoria</th>
+                    <th>Description</th>            
+                    <th width="200px">Options</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <?php foreach ($peliculas as $key => $pelicula): ?>
+                    <tr>
+                        <td><?= $pelicula->id ?></td>
+                        <td><?= $pelicula->title ?></td>
+                        <td><?= $pelicula->categoria ?></td>
+                        <td><?= $pelicula->description ?></td>
+                        <td>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <a class="btn btn-outline-primary btn-sm me-2" href="/dashboard/pelicula/show/<?= $pelicula->id ?>">Show</a>
+                                <a class="btn btn-outline-primary btn-sm me-2" href="/dashboard/pelicula/edit/<?= $pelicula->id ?>">Edit</a>
+                                <a class="btn btn-outline-primary btn-sm me-2" href="<?= route_to('pelicula.etiquetas', $pelicula->id) ?>">Tags</a>
+                                <form action="/dashboard/pelicula/delete/<?= $pelicula->id ?>" method="post">
+                                    <button class="btn btn-outline-danger btn-sm me-2" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>     
+        </table>
+    </div>
+    
     <?= $pager->links() ?>
-
-    <?= view('/dashboard/pelicula/include/footer',['option' => 'categoria']); ?>
+    
 <?= $this->endSection() ?>

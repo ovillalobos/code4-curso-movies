@@ -155,7 +155,8 @@ class Pelicula extends BaseController
         echo "deleted";
 
         return redirect()->to('/dashboard/pelicula')->with(
-            'mensaje','Registro eliminado correctamente'
+            'mensaje','Registro eliminado correctamente',
+            'error_tipo', 'success'
         );;
     }
 

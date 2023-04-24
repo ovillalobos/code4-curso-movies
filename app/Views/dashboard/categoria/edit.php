@@ -12,5 +12,4 @@
     <form action="/dashboard/categoria/update/<?= $categoria->id ?>" method="post">
         <?= view('/dashboard/categoria/include/form',['op' => 'Update']); ?>
     </form>        
-    <?= view('/dashboard/categoria/include/footer',['option' => 'back']); ?>
 <?= $this->endSection() ?>

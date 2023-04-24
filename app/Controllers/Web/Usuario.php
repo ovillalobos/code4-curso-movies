@@ -74,7 +74,8 @@ class Usuario extends BaseController
         }
 
         session()->setFlashdata([
-            'validation' => $this->validator
+            'validation' => $this->validator,
+            'error_tipo' => 'error'
         ]);
 
         return redirect()->back()->withInput();

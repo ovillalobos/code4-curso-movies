@@ -51,5 +51,4 @@
         }
     });
     </script>
-    <?= view('/dashboard/pelicula/include/footer',['option' => 'back']); ?>
 <?= $this->endSection() ?>

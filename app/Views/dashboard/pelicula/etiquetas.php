@@ -10,5 +10,4 @@
 
 <?= $this->section('contenido') ?>    
     <?= view('/dashboard/pelicula/include/form_etiquetas'); ?>
-    <?= view('/dashboard/pelicula/include/footer',['option' => 'back']); ?>
 <?= $this->endSection() ?>

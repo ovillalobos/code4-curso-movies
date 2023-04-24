@@ -12,5 +12,4 @@
     <form action="/dashboard/categoria/create" method="post">
         <?= view('/dashboard/categoria/include/form',['op' => 'Create']); ?>
     </form>        
-    <?= view('/dashboard/categoria/include/footer',['option' => 'back']); ?>
 <?= $this->endSection() ?>

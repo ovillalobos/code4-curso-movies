@@ -13,6 +13,4 @@
     <form enctype="multipart/form-data" action="/dashboard/pelicula/update/<?= $pelicula->id; ?>" method="post">
         <?= view('/dashboard/pelicula/include/form',['op' => 'Update']); ?>
     </form>
-
-    <?= view('/dashboard/pelicula/include/footer',['option' => 'back']); ?>
 <?= $this->endSection() ?>

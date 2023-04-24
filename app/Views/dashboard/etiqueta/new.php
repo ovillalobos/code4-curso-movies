@@ -12,6 +12,4 @@
     <form action="/dashboard/etiqueta/create" method="post">
         <?= view('/dashboard/etiqueta/include/form',['op' => 'Create']); ?>
     </form>
-
-    <?= view('/dashboard/etiqueta/include/footer',['option' => 'back']); ?>
 <?= $this->endSection() ?>

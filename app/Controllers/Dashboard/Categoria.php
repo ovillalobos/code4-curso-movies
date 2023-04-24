@@ -65,7 +65,8 @@ class Categoria extends BaseController
             );
         } else {
             session()->setFlashdata([
-                'validation' => $this->validator
+                'validation' => $this->validator,
+                'error_tipo' => 'error'
             ]);
 
             return redirect()->back()->withInput();
@@ -95,7 +96,8 @@ class Categoria extends BaseController
             );
         } else {
             session()->setFlashdata([
-                'validation' => $this->validator
+                'validation' => $this->validator,
+                'error_tipo' => 'error'
             ]);
 
             return redirect()->back()->withInput();
@@ -107,7 +109,11 @@ class Categoria extends BaseController
         $this->categoriaModel->delete($id);
 
         //MANEJO DE SESSIONES (1)
-        session()->setFlashdata('mensaje','Registro eliminado correctamente');
+        session()->setFlashdata([
+            'mensaje'=>'Registro eliminado correctamente',
+            'error_tipo' => 'success'
+        ]);
+
         return redirect()->to('/dashboard/categoria');
         //MANEJO DE SESSIONES (2)
         return redirect()->to('/dashboard/categoria')->with(

@@ -10,5 +10,4 @@
 
 <?= $this->section('contenido') ?>
     <p><?= $categoria->title ?></p>
-    <?= view('/dashboard/categoria/include/footer',['option' => 'back']); ?>
 <?= $this->endSection() ?>

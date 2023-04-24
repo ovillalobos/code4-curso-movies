@@ -12,6 +12,4 @@
     <form action="/dashboard/pelicula/create" method="post">
         <?= view('/dashboard/pelicula/include/form',['op' => 'Create']); ?>
     </form>
-
-    <?= view('/dashboard/pelicula/include/footer',['option' => 'back']); ?>
 <?= $this->endSection() ?>
