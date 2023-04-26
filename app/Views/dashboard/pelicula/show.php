@@ -22,10 +22,10 @@
                 <li>
                     <img src="/uploads/peliculas/<?= $imagen->imagen ?>" alt="<?= $imagen->data ?>" width="200px">
                     <form action="<?= route_to('pelicula.delete_image', $pelicula->id, $imagen->id)?>" method="post">
-                        <button type="submit">Borrar</button>
+                        <button class="btn btn-danger" type="submit">Borrar</button>
                     </form>
                     <form action="<?= route_to('pelicula.download_file', $imagen->id)?>" method="get">
-                        <button type="submit">Download</button>
+                        <button class="btn btn-primary" type="submit">Download</button>
                     </form>
                 </li>
             <?php endforeach ?>
@@ -34,7 +34,7 @@
 
     <h3>Etiquetas</h3>
     <?php foreach($etiquetas as $etiqueta): ?>        
-        <button data-url='<?= route_to('pelicula.etiqueta_delete', $pelicula->id, $etiqueta->id) ?>' class="delete_etiqueta"><?= $etiqueta->title ?></button>
+        <button data-url='<?= route_to('pelicula.etiqueta_delete', $pelicula->id, $etiqueta->id) ?>' class="delete_etiqueta btn btn-primary"><?= $etiqueta->title ?></button>
     <?php endforeach ?>
 
     <script>

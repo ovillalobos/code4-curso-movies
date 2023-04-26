@@ -57,7 +57,8 @@ $routes->group('dashboard', function($routes){
     $routes->post('pelicula/delete_image/(:num)/(:num)', [\App\Controllers\Dashboard\Pelicula::class, 'delete_image/$1/$2'], ['as' => 'pelicula.delete_image'] );
     $routes->get('pelicula/download_file/(:num)', [\App\Controllers\Dashboard\Pelicula::class, 'download_file/$1'], ['as' => 'pelicula.download_file'] );
     //TEST IMAGE SECURE
-    $routes->get('pelicula/openfile/(:any)', [\App\Controllers\Dashboard\Pelicula::class, 'open_fileSecure/$1']);
+    $routes->get('pelicula/openfile/(:any)', 
+        [\App\Controllers\Dashboard\Pelicula::class, 'open_fileSecure/$1']);
 
     $routes->presenter('pelicula', [
         //'controller' => 'Dashboard\Pelicula',
@@ -87,6 +88,29 @@ $routes->group('dashboard', function($routes){
     $routes->get('usuario/crear',[\App\Controllers\Web\Usuario::class, 'crear_usuario_auto']);
     $routes->get('usuario/probar/password',[\App\Controllers\Web\Usuario::class, 'probar_password']);
 
+});
+
+$routes->group('blog', function($routes){
+    $routes->get('', 
+        'Blog\Pelicula::index', 
+        ['as' => 'blog.pelicula.index']
+    );
+    $routes->get('show/(:num)', 
+        'Blog\Pelicula::show/$1', 
+        ['as' => 'blog.pelicula.show']
+    );
+    $routes->get('categoria/(:num)', 
+        'Blog\Pelicula::indexByCategoria/$1', 
+        ['as' => 'blog.pelicula.indexByCategoria']
+    );
+    $routes->get('etiqueta/(:num)', 
+        'Blog\Pelicula::indexByEtiqueta/$1', 
+        ['as' => 'blog.pelicula.indexByEtiqueta']
+    );
+    $routes->get('etiquetasByCategoria/(:num)', 
+        'Blog\Pelicula::etiquetasByCategoria/$1', 
+        ['as' => 'blog.pelicula.etiquetasByCategoria']
+    );
 });
 
 $routes->get('login', [\App\Controllers\Web\Usuario::class, 'login'],[
